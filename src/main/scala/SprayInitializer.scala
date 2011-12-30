@@ -12,9 +12,6 @@ class SprayInitializer extends Initializer with Logging {
 
   val akkaConfig = akka.config.Config.config
 
-  // ///////////// INDEXES for collections go here (include all lookup fields)
-  // configsCollection.ensureIndex(MongoDBObject("customerId" -> 1), "idx_customerId")
-
   val msgService = actorOf(new HttpService(new MsgService{}.service))
   val rootService = actorOf(new RootService(msgService))
 
